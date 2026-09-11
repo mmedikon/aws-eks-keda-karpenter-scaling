@@ -9,21 +9,6 @@ Together: KEDA decides when to scale pods based on real signals, and Karpenter m
 
 
 
-Event source (SQS/Kafka/Prometheus)
-       |
-       |
-       |
-       ▼
-   KEDA ScaledObject ──► HPA ──► Deployment scales pods
-                                       │
-                                       ▼
-                         Pending pods (no capacity)
-                                       │
-                                       ▼
-                          Karpenter provisions nodes
-                                       │
-                                       ▼
-                              Pods scheduled & running
 
                               
 ****Installation****
