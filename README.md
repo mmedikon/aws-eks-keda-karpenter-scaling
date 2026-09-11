@@ -46,4 +46,4 @@ Event source (SQS/Kafka/Prometheus)
 
 **Uninstallation**
 
-          _ terraform destroy_
+           terraform destroy
