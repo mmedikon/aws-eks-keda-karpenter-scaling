@@ -26,20 +26,24 @@ Event source (SQS/Kafka/Prometheus)
                               Pods scheduled & running
 
                               
-**Installation**
+****Installation****
 
-terraform init
-terffaform plan
-terraform apply
+           _terraform init__
 
-**Deploy Nodeclass and Nodepools object for Karpenter**
+           __terffaform plan__
+  
+           _terraform apply__
+**
+**Deploy Nodeclass and Nodepools object for Karpenter****
 
-kubectl apply -f default-nodeclass.yaml
-kubectl apply -f default_nodepool.yaml
+            __kubectl apply -f default-nodeclass.yaml_
 
-**Deploy ScaledObject and Trigger Authentication for KEDA**
+           _kubectl apply -f default_nodepool.yaml__
 
-Kubectl apply -f kedascal.yaml
+****Deploy ScaledObject and Trigger Authentication for KEDA****
+
+           _Kubectl apply -f kedascal.yaml_
+
 **Uninstallation**
 
-terraform destroy
+          _ terraform destroy_
