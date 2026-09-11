@@ -1,0 +1,17 @@
+---
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: default
+spec:
+  amiSelectorTerms:
+    - alias: bottlerocket@latest
+  role: demoECOMNG-ng112
+  subnetSelectorTerms:
+    - tags:
+        Name: "demoECOMIN-vpc-private*"
+  securityGroupSelectorTerms:
+    - tags:
+        Name: "demoECOMIN-node"
+
+---

@@ -1,0 +1,29 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: demo-app-scaledobject
+  namespace: demo-ns
+spec:
+  minReplicaCount: 0  # scale down to 0
+  maxReplicaCount: 5
+  pollingInterval: 30 
+  scaleTargetRef:
+    name: demo-app    # name of our demo-app deployment
+  triggers:
+  - type: aws-sqs-queue
+    authenticationRef:
+      name: demo-app-trigger-auth-aws-credentials  # trigger auth object name
+    metadata:
+      queueURL: "https://sqs.us-east-1.amazonaws.com/966579633782/demo-app-sqs"
+      queueLength: "2" # 2 messages per pod 
+      awsRegion: "us-east-1"
+      identityOwner: workload # defaults to pod if unset
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: demo-app-trigger-auth-aws-credentials
+  namespace: demo-ns
+spec:
+  podIdentity:
+    provider: aws-eks # or aws-kiam when using kiam
